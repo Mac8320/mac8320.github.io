@@ -1,7 +1,7 @@
 ---
-title: "Relatório 02"
+title: "Relatório 02 - Como usar o projeto Relatórios"
 author: "Ben Dêivide"
-date: "12/04/2022"
+date: "29/04/2022"
 header-includes:
   - \usepackage{titling}
   - \pretitle{\begin{center}
@@ -30,7 +30,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Objetivo
 
-Descrever o objetivo do relatório!
+Descrever como realizar o projeto relatórios com detalhamento!
 
 # Apresentação do relatório
 
