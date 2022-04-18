@@ -8,10 +8,13 @@ links:
     url: "mailto:mac83203826@hotmail.com"
   - label: LinkedIn
     url: "https://www.linkedin.com/in/marco-ant%C3%B4nio-c%C3%A2ndido-da-silva-597b401b6/"
+  - label: Relatórios
+    url: "https://mac8320.github.io/"
+    
 output:
   postcards::jolla
 ---
- 
-- Cursando o 9° período de Engenharia Civil
-- Diretor presidente da Ideal Consultoria
-- Estágio na VSB unidade Jeceaba no setor de Infraestrutura
+
+-  Cursando o 9° período de Engenharia Civil;
+-  Diretor presidente da Ideal Consultoria;
+-  Estágio na VSB, unidade Jeceaba, no setor de Infraestrutura.
