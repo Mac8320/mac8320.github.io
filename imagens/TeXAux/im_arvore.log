@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=latex 2021.12.17)  12 APR 2022 09:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=latex 2021.12.17)  12 APR 2022 18:52
 entering extended mode
 **C:/Users/MABENLA/Desktop/DiscEstComp/imagens/im_arvore.tex
 (C:/Users/MABENLA/Desktop/DiscEstComp/imagens/im_arvore.tex
@@ -537,12 +537,12 @@ LaTeX Font Info:    ... okay on input line 48.
 
 ] (im_arvore.aux) ) 
 Here is how much of TeX's memory you used:
- 23438 strings out of 481175
- 568989 string characters out of 2912437
- 845610 words of memory out of 3000000
- 38794 multiletter control sequences out of 15000+200000
+ 23519 strings out of 481175
+ 570468 string characters out of 2912437
+ 850670 words of memory out of 3000000
+ 38875 multiletter control sequences out of 15000+200000
  535256 words of font info for 30 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 145i,8n,184p,1670b,2320s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 145i,8n,184p,1670b,2388s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on im_arvore.dvi (1 page, 48088 bytes).
+Output written on im_arvore.dvi (1 page, 51524 bytes).

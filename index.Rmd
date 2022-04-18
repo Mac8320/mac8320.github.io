@@ -1,6 +1,6 @@
 ---
 title: "Relatórios da Disciplina de Estatística Computacional"
-author: "Ben Dêivide"
+author: "[Marco Antônio](https://mac8320.github.io) | [DEFIM/UFSJ](https://ufsj.edu.br)"
 date: "`r format(Sys.time(), '%d %B, %Y, %Hh:%Mmin:%Sseg')`"
 header-includes:
   - \usepackage{titling}
@@ -11,6 +11,7 @@ toc-title: "Sumário"
 output:
   
   html_document:
+#   css: style.css
     theme: journal
     highlight: tango
     toc: yes
@@ -28,7 +29,13 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 --- 
 
+# Mais informações sobre mim
 
+Acesse: [Nome do Aluno](info/index.html){target="_blank"}
+
+# Página dos alunos da disciplina
+
+- Acesse: [Página dos alunos da disciplina de Estatística Computacional](https://bendeivide.github.io/estcompalunos/){target="_blank"}
 
 # Visão geral sobre os relatórios {.tabset .tabset-fade}
 
@@ -53,7 +60,7 @@ Este projeto está disponível em <https://github.com/bendeivide/discestcomp.git
 - Instalar Pacotes (No R): 
 
 ```{r eval=FALSE}
-pkgs <- c("rmarkdown", "knitr", "tinytex")
+pkgs <- c("rmarkdown", "knitr", "tinytex", "postcards")
 install.packages(pkgs)
 ```
 
@@ -104,17 +111,22 @@ A estrutura de nosso projeto será da seguinte forma:
 knitr::include_graphics('imagens/estdir.png')
 ```
 
+- `discestcomp/index.html` é a página principal. Sempre use `index.Rmd` para renderizar a página em HTML;
+- `images` é o subdiretório que criamos algumas imagens. Para as imagens necessárias nos relatórios, insira nos diretórios dos relatórios;
+- `info` é o diretório que representa a página das informações adicionais de cada aluno. Sempre use `index.Rmd` para renderizar a página em HTML. Caso deseje alterar a foto `./info/logo.png` por uma sua, insira em `./info/`, a respectiva imagem, renomeando-a por `logo.png`, lembre-se da extensão da imagem, `.png`;
+- Todos os subdiretórios `./rel0X` representam os locais para desenvolver os relatórios. Para `X = 1`, isto é, `./rel01`, temos o desenvolvimento do relatório 1, e assim sucessivamente. Para a criação de mais relatórios, copie um desses subdiretórios como modelo para o desenvolvimento do próximo. Por exemplo, se criarmos o relatório 03, copie um dos subdiretórios referidos, e renomei-o como `./rel03`. Sempre use `index.Rmd` para renderizar a página em HTML. Para saber como inserir o link desse relatório na página principal, `discestcomp/index.Rmd`, veja a [subseção 4. Relatórios](#relatorio).
+
 ---
 
-# Relatórios
+# Relatórios {#relatorio}
 
 Para *linkar* os relatórios basta usar o código (Exemplo Relatório 01):
 
 ```
-- [Relatorio 01 (Insira a data)](rel01/index.html)
+- [Relatorio 01 (Insira a data)](rel01/index.html){target="_blank"}
 ```
 Relatórios desenvolvidos:
 
-- [Relatório 01 (12/04/2022)](rel01/index.html)
-- [Relatório 02 (12/04/2022)](rel02/index.html)
+- [Relatório 01 (12/04/2022)](rel01/index.html){target="_blank"}
+- [Relatório 02 (12/04/2022)](rel02/index.html){target="_blank"}
 - ...
