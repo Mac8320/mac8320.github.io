@@ -1,13 +1,17 @@
 ---
-title: "Nome_Aluno(a)"
-image: "logo.png"
+title: "Marco Antônio Cândido da Silva | Eng Civil (UFSJ)"
+image: "foto.png"
 links:
   - label: GitHub
-    url: "https://github.com/"
+    url: "https://github.com/Mac8320"
   - label: Email
-    url: "mailto:name@gmail.com"
+    url: "mailto:mac83203826@hotmail.com"
+  - label: LinkedIn
+    url: "https://www.linkedin.com/in/marco-ant%C3%B4nio-c%C3%A2ndido-da-silva-597b401b6/"
 output:
   postcards::jolla
 ---
  
-Descrição sobre o aluno(a)!
+- Cursando o 9° período de Engenharia Civil
+- Diretor presidente da Ideal Consultoria
+- Estágio na VSB unidade Jeceaba no setor de Infraestrutura

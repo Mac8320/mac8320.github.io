@@ -1,6 +1,6 @@
 ---
 title: "Relatórios da Disciplina de Estatística Computacional"
-author: "[Marco Antônio](https://mac8320.github.io) | [DEFIM/UFSJ](https://ufsj.edu.br)"
+author: "[Marco Antônio](https://github.com/Mac8320) | [LinkedIn](https://www.linkedin.com/in/marco-ant%C3%B4nio-c%C3%A2ndido-da-silva-597b401b6/)"
 date: "`r format(Sys.time(), '%d %B, %Y, %Hh:%Mmin:%Sseg')`"
 header-includes:
   - \usepackage{titling}
@@ -31,7 +31,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Mais informações sobre mim
 
-Acesse: [Nome do Aluno](info/index.html){target="_blank"}
+Acesse: [Marco Antônio Cândido da Silva](info/index.html){target="_blank"}
 
 # Página dos alunos da disciplina
 
@@ -127,6 +127,7 @@ Para *linkar* os relatórios basta usar o código (Exemplo Relatório 01):
 ```
 Relatórios desenvolvidos:
 
-- [Relatório 01 (12/04/2022)](rel01/index.html){target="_blank"}
-- [Relatório 02 (12/04/2022)](rel02/index.html){target="_blank"}
+- [Relatório 01 (25/04/2022)](rel01/index.html){target="_blank"}
+- [Relatório 02 (29/04/2022)](rel02/index.html){target="_blank"}
+- [Relatório 03 (29/04/2022)](rel03/index.html){target="_blank"}
 - ...
