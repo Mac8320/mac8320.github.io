@@ -1,38 +1,183 @@
 ---
-title: "Relatório 02"
-author: "Ben Dêivide"
-date: "12/04/2022"
-header-includes:
-  - \usepackage{titling}
-  - \pretitle{\begin{center}
-    \includegraphics[width=2in,height=2in]{ufsj.png}\LARGE\\}
-  - \posttitle{\end{center}}
-toc-title: "Sumário"
-output:
-  
-  html_document:
-    theme: journal
-    highlight: tango
-    toc: yes
-    number_sections: yes
-    includes:
-      in_header: logo.html
-  pdf_document:
-    
-    toc: yes
-    number_sections: yes
+title: "Relatório 3 - Distribuições de Probabilidade"
+author: "Marco Antônio"
+date: '04/05/2022'
+output: ioslides_presentation
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 ```
---- 
 
-# Objetivo
+## Objetivo
 
-Descrever o objetivo do relatório!
+Nesse relatório, será abordado sobre as distribuições de proabalidade e como aplicá-las no ambiente R.
 
-# Apresentação do relatório
+## Apresentação do relatório
 
-Aqui será o local para apresentar o material sobre o relatório.
+Diante do objetivo do relatório, será apresentado nas próximas subseções, os pontos a serem discutidos.
 
+## Introdução
+
+Um experimento que pode gerar diferentes resultados se realizado mais de uma vez sob as mesmas condições é chamado de experimento aleatório. Alguns exemplos desses experimentos são:
+
+- o lançamento de um dado;
+
+- lançamentos consecutivos de uma moeda; e
+
+- a observação da duração do tempo de um dispositivo eletrônico.
+
+## Espaço Amostral
+
+O conjunto formado por todos os possíveis resultados de um experimento aleatório é chamado de espaço amostral e é representado pela letra grega maiúscula Ω. Em geral usamos a letra grega minúscula ω para representar um resultado específico de um experimento aleatório. Nesse caso podemos escrever ω ∈ Ω.
+
+## Distribuições de Probabilidade
+
+Uma distribuição de probabilidade é um modelo matemático que relaciona um certo valor da variável em estudo com a sua probabilidade de ocorrência.
+
+Existem dois tipos de distribuição de probabilidade, contínuas e discretas.
+
+## Distribuições Contínuas
+
+Quando a variável que está sendo medida é expressa em uma escala contínua, como no caso de uma característica dimensional.
+
+A probabilidade de que a variável X assuma um valor específico x é dada por:
+
+<center>
+
+$P(X=x) = P(x)$
+
+</center>
+
+## Distribuições Discretas
+
+Quando a variável que está sendo medida só pode assumir certos valores, como por exemplo os valores inteiros: 0, 1, 2, etc.
+
+As probabilidades são especificadas em termos de intervalos, pois a probabilidade associada a um número específico é dada por:
+
+<center>
+
+$P(a ≤ X  ≤b) = \int_{a}^{b}f(x)dx$
+
+</center>
+
+## Distribuições de Probabilidade no R
+
+O R inclui algumas operações com as distribuições de probabilidade. Dessa forma, existem 4 operações básicas para cada tipo de distribuição, as quais podem ser indicadas pelas seguintes letras:
+
+- `d`: calcula a densidade de probabilidade **f(x)** no ponto;
+
+- `p`: calcula a função de probabilidade acumulada **F(x)** no ponto;
+
+- `q`: calcula o quantil correspondente a uma dada probabilidade;
+
+- `r`: gera uma amostra aleatória da distribuição.
+
+## Distribuição Normal
+
+A distribuição Normal é a mais importante das distribuições estatísticas, tanto na teoria como na prática:
+
+- Representa a distribuição de freqüência de muitos fenômenos naturais;
+
+- Serve como aproximação da distribuição Binomial, quando n é grande;
+
+- As médias e as proporções de grandes amostras segue a distribuição Normal (Teorema do Limite Central).
+
+A funcionalidade para distribuição normal é implementada por argumentos que combinam as letras supracitadas com o termo norm. Por *default* as funções assumem a distribuição normal padrão $N(μ =0, σ^2=1)$
+
+## Distribuição Normal
+
+O comando abaixo corresponde ao valor da densidade da normalno ponto 2
+
+```{r echo=TRUE}
+dnorm(2)
+```
+
+A função pnorm(5) calcula a probabilidade $P(X \leq 5)$
+
+```{r echo=TRUE}
+pnorm(5)
+```
+## Distribuição Normal
+
+O comando qnorm(0.975) calcula o valor de $a$ tal que $P(X \leq a)=0.975$.
+
+```{r echo=TRUE}
+qnorm(0.975)
+```
+
+O Comando rnorm(4) gera uma amostra de 10 elementos da normal padrão.
+
+```{r echo=TRUE}
+rnorm(4)
+```
+
+## Distribuição Normal
+
+As funções relacionadas à distribuição normal possuem os argumentos mean e sd para definir média e desvio padrão da distribuição, os quaos podem ser modificados.
+
+```{r echo=TRUE}
+qnorm(0.975, 50, 4)
+```
+
+É possível ainda realizar a diferença entre probabilidades.
+
+```{r echo=TRUE}
+pnorm(100, 100, 10) - pnorm(80, 100, 10)
+```
+
+Também conseguimos construir gráficos a partir dessas funções.
+
+Para isso, serão utilizados valores de $X$ entre -4 e 4 que correspondem a +/- quatro desvios padrões da média.
+
+## Distribuição Normal
+
+Gráfico da função densidade acumulada:
+
+```{r echo=TRUE}
+plot(dnorm, -4, 4)
+```
+
+## Distribuição Normal
+
+Gráfico da função probabilidade acumulada:
+
+```{r echo=TRUE}
+plot(pnorm, -4, 4)
+```
+
+## Distribuição Binomial
+
+A distribuição binomial é adequada para descrever situações em que os resultados de uma variável aleatória podem ser agrupados em apenas duas classes ou categorias. 
+
+As categorias devem ser mutuamente excludentes, de forma que não haja dúvidas na classificação do resultado da variável nas categorias e coletivamente exaustivas, de forma que não seja possível nenhum outro resultado diferente das categorias.
+
+Para a realização de cálculos no R com a distribuição binomial, devemos combinar as letras básicas com o termo binom.
+
+## Distribuição Binomial
+
+Em uma distribuição discreta de probabilidades os gráficos são diferentes dos obtidos para distribuição normal e os cálculos de probabilidades devem considerar as probabilidades nos pontos. 
+
+## Distribuição Binomial
+Gráfico da função densidade Binomial
+```{r echo=TRUE}
+x <- 0:10
+fx <- dbinom(x, 10, 0.35)
+plot(x, fx, type='h')
+```
+
+## Distribuição Binomial
+Gráfico da função probabilidade Binomial
+```{r echo=TRUE}
+x <- 0:10
+Fx <- pbinom(x, 10, 0.35)
+plot(x, Fx, type='S')
+```
+
+## Outras distribuições
+
+- Uniforme contínua: runif, punif, dunif, qunif;
+
+- Poisson: rpois, …
+
+- Outras distribuições: dbeta, dcauchy, dchisq, dexp, df, dgamma, dgeom, dlnorm, dmultinom, dnbinom, dt, dweibull.
