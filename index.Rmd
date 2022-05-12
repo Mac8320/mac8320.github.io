@@ -130,6 +130,6 @@ Relatórios desenvolvidos:
 - [Relatório 01 (25/04/2022)](rel01/index.html){target="_blank"}
 - [Relatório 02 (29/04/2022)](rel02/index.html){target="_blank"}
 - [Relatório 03 (04/05/2022)](rel03/index.html){target="_blank"}
-- [Relatório 04 (xx/05/2022)](rel03/index.html){target="_blank"}
-- [Relatório 05 (xx/05/2022)](rel03/index.html){target="_blank"}
+- [Relatório 04 (12/05/2022)](rel04/index.html){target="_blank"}
+- [Relatório 05 (19/05/2022)](rel05/index.html){target="_blank"}
 - ...
