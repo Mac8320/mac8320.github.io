@@ -5,19 +5,18 @@ cv <- function (x, rounding = 2, na.rm = FALSE, details = FALSE, grouped = TRUE)
   if (class(x) != "leem") 
     stop("Use the 'new_leem()' function to create an object of class leem!", 
          call. = FALSE)
-  if (class(x) == "leem" & is.null(attr(x, "table"))) 
-    x <- tabfreq(x)
+  if (class(x) == "leem" & is.null(attr(x, "table"))) x <- tabfreq(x)
   if (attr(x, "variable") == "discrete") {
     numchar <- is.numeric(x$estat$raw_data)
     if (numchar) {
-      cof <- round(100*sd(x = x$estat$raw_data, na.rm = na.rm)/mean(x = x$estat$raw_data, na.rm = na.rm), digits = rounding)
-      resume <- list(cv = cof, table = x$tabela, rawdata = x$estat$raw_data)
+      cvar <- round(100 * sd(x = x$estat$raw_data, na.rm = na.rm)/mean(x = x$estat$raw_data, na.rm = na.rm), digits = rounding)
+      resume <- list(cv = cvar, table = x$tabela, rawdata = x$estat$raw_data)
       
       if (details) {
         return(resume)
       }
       else {
-        return(cof)
+        return(cvar)
       }
     }
     else {
@@ -28,26 +27,26 @@ cv <- function (x, rounding = 2, na.rm = FALSE, details = FALSE, grouped = TRUE)
   
   if (attr(x, "variable") == "continuous") {
     if (grouped == TRUE) {
-  cv <- 100*(sdev(x)/mean(x))
-  resume <- list(cv = cof, table = x$tabela, rawdata = x$estat$raw_data)
+  cvar <- 100*(sdev(x)/mean(x))
+  resume <- list(cv = cvar, table = x$tabela, rawdata = x$estat$raw_data)
   
   if (details) {
     return(resume)
   }
   else {
-    return(cof)
+    return(cvar)
   }
     } else {
       
-      cv <- round(100*sd(x = x$estat$raw_data, na.rm = na.rm)/mean(x = x$estat$raw_data, na.rm = na.rm),
+      cvar <- round(100*sd(x = x$estat$raw_data, na.rm = na.rm)/mean(x = x$estat$raw_data, na.rm = na.rm),
                        digits = rounding)
-      resume <- list(sdeviation = cv, table = x$tabela,
+      resume <- list(sdeviation = cvar, table = x$tabela,
                      rawdata = x$estat$raw_data)
       if (details) {
         return(resume)
       }
       else {
-        return(cv)
+        return(cvar)
       }
     }
   }
