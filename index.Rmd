@@ -133,4 +133,4 @@ Relatórios desenvolvidos:
 - [Relatório 04 (12/05/2022)](rel04/index.html){target="_blank"}
 - Relatório 05 (20/05/2022)
 - [cv.R](rel05/cv.R){target="_blank"}
-- ...
+- [Relatório 06 (29/05/2022)](rel06/index.html){target="_blank"}
