@@ -1,7 +1,7 @@
 ---
-title: "Relatório 02"
-author: "Ben Dêivide"
-date: "12/04/2022"
+title: "Relatório 06"
+author: "Marco Antônio"
+date: "29/05/2022"
 header-includes:
   - \usepackage{titling}
   - \pretitle{\begin{center}
@@ -30,9 +30,121 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Objetivo
 
-Descrever o objetivo do relatório!
+O objetivo do relatório é descrever brevente a respeito da implementação da fução Coeficiente de Variação (CV) no R, utilizando o pacote Leem.
 
 # Apresentação do relatório
 
-Aqui será o local para apresentar o material sobre o relatório.
+Diante do objetivo do relatório, será apresentado nas próximas subseções, os pontos a serem discutidos.
 
+# Coeficiente de Variação
+
+## Descrição
+O Coeficiente de Variação trata-se de uma medida relativa de dispersão, bastante útil para a comparação em termos relativos do grau de concentração em torno da média de séries distintas, onde seu resultado é expresso em porcentagem. Essa medida é dada por:
+
+<center>
+
+$CV = 100 * σ/μ$
+
+</center>
+
+A importância dessa função está relacionada ao fato de que o desvio-padrão é relativo à média. Dessa forma, como duas distribuições podem ter médias diferentes, o desvio destas distribuições não é comparável. Logo, o Coeficiente de Variação se torna muito útil para comparação entre amostras.
+
+## Cálculo do CV no R
+
+O R pode calcular o coeficiente de variação da seguinte forma:
+
+```{git}
+#Sintaxe:
+> 100*sd(dados)/mean(dados)
+
+#Exemplo: 
+> x <-c(10,11,9,10,10,9,11)
+> CV = 100*sd(x)/mean(x)
+> CV
+[1] 8.164966 #em torno de 8%
+
+```
+
+Contudo, também podemos realizar esse procedimento através de uma função. Sendo assim, alguns argumentos podem ser empregados para garantir a proteção da função e a manipualção dos dados de entrada, conforme o resultado que se deseja obter. São eles:
+
+- **rouding**: Determina o modo de arredondamento. Se nenhum parâmetro for fornecido, o modo de arredondamento do contexto atual será usado;
+
+- **na.rm**: Parâmetro usado por várias funções de dataframe para remover NA (quando a informação em uma certa célula da tabela não é fornecida). Quando na.rm é TRUE, a função ignora quaisquer valores NA. No entanto, quando na.rm for FALSE, ele retornará NA do cálculo que está sendo feito;
+
+- **grouped**: Forma especial de dataframe que permite criar um objeto de dados agrupados a partir de dois tipos de argumentos;
+
+- **details**: Fornece uma lista de cada variável e cada linha com a exibição do número de valores ausentes associados.
+
+Dessa forma, podemos declarar a função como:
+
+```{git}
+cv <- function (x, rounding = 2, na.rm = FALSE, details = FALSE, grouped = TRUE)
+
+```
+
+Desenvolvendo a função:
+
+```{git}
+{
+  if (class(x) != "leem") 
+    stop("Use the 'new_leem()' function to create an object of class leem!", 
+         call. = FALSE)
+  if (class(x) == "leem" & is.null(attr(x, "table"))) x <- tabfreq(x)
+  if (attr(x, "variable") == "discrete") {
+    numchar <- is.numeric(x$estat$raw_data)
+    if (numchar) {
+      cvar <- round(100 * sd(x = x$estat$raw_data, na.rm = na.rm)/mean(x = x$estat$raw_data, na.rm = na.rm), digits = rounding)
+      resume <- list(cv = cvar, table = x$tabela, rawdata = x$estat$raw_data)
+      
+      if (details) {
+        return(resume)
+      }
+      else {
+        return(cvar)
+      }
+    }
+    else {
+      stop("Measure not used for this data type!", 
+           call. = FALSE, domain = "R-leem")
+    }
+  }
+  
+  if (attr(x, "variable") == "continuous") {
+    if (grouped == TRUE) {
+  cvar <- 100*(sdev(x)/mean(x))
+  resume <- list(cv = cvar, table = x$tabela, rawdata = x$estat$raw_data)
+  
+  if (details) {
+    return(resume)
+  }
+  else {
+    return(cvar)
+  }
+    } else {
+      
+      cvar <- round(100*sd(x = x$estat$raw_data, na.rm = na.rm)/mean(x = x$estat$raw_data, na.rm = na.rm),
+                       digits = rounding)
+      resume <- list(sdeviation = cvar, table = x$tabela,
+                     rawdata = x$estat$raw_data)
+      if (details) {
+        return(resume)
+      }
+      else {
+        return(cvar)
+      }
+    }
+  }
+}
+
+```
+
+Para avaliar o funcionamento da mesma, podemos utilizar:
+
+```{git}
+set.seed(10)
+x <- rnorm(36, 100, 50)
+x <- new_leem(x, variable = 2)
+cv(x)
+```
+
+O resultado obtido foi de 59.29991, o que significa que a dispersão dos dados com relação a média é de cerca de 59%.
