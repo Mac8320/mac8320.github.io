@@ -23,17 +23,17 @@ p <- function(q, dist = "normal", lower.tail = TRUE, rounding = 4,
         polygon(c(y, rev(y)),
                 c(fy, rep(0, length(fy))),
                 col="gray90")
-        abline(v=0, lty=2)
+        abline(v=argaddit$mean, lty=2)
         qq <- round(q, digits=2)
         qqaux <-round(q, digits=2)
-        Pr <- round(pnorm(qq,  mean = mu, sd=sigma, lower.tail = X), digits=rounding)
+        Pr <- round(pnorm(qq,  mean = mu, sd=sigma, lower.tail = F), digits=rounding)
         Pr <- gsub("\\.", ",", Pr)
         qq <- gsub("\\.", ",", qq)
         axis(side=1, at=qqaux, labels=qqaux,
              col="red", font = 2)
         abline(v = qqaux, lty=2, col = "red")
         legend("topleft", bty="n", fill="red",
-               legend=substitute(P(X <= q)==Pr~"\n\n"~mean==mu, list(q=qq, Pr=Pr, mu = mu)))
+               legend=substitute(P(X~`<`~q)==Pr~"\n\n"~mean==mu~~sd == sigma, list(q=qq, Pr=Pr, mu = mu, sigma=sigma)))
       }
       if (gui == "plot" ) {
         # Probability
@@ -62,7 +62,7 @@ p <- function(q, dist = "normal", lower.tail = TRUE, rounding = 4,
         polygon(c(y, rev(y)),
                 c(fy, rep(0, length(fy))),
                 col="gray90")
-        abline(v=0, lty=2)
+        abline(v=argaddit$mean, lty=2)
         qq <- round(q, digits=2)
         qqaux <-round(q, digits=2)
         Pr <- round(pnorm(qq, mean = mu, sd=sigma, lower.tail = F), digits=rounding)
@@ -72,7 +72,7 @@ p <- function(q, dist = "normal", lower.tail = TRUE, rounding = 4,
              col="red", font = 2)
         abline(v = qqaux, lty=2, col = "red")
         legend("topleft", bty="n", fill="red",
-               legend=substitute(P(X~`>`~q)==Pr~"\n\n"~mean==mu, list(q=qq, Pr=Pr, mu = mu)))
+               legend=substitute(P(X~`>`~q)==Pr~"\n\n"~mean==mu~~sd == sigma, list(q=qq, Pr=Pr, mu = mu, sigma=sigma)))
       }
       if (gui == "plot") {
         # Probability
