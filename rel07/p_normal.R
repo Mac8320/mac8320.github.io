@@ -12,9 +12,9 @@ p <- function(q, dist = "normal", lower.tail = TRUE, rounding = 4,
     
     if (lower.tail) {
       plotcurve <- function(q, mu, sigma) {
-        curve(dnorm(x, mean = mu, sd = sigma), -6, 6, ylab = expression(f[T](t)), xlab="T")
-        x <- seq(-6, q, by = 0.01)
-        y <- seq(q, 6, by = 0.01)
+        curve(dnorm(x, mean = mu, sd = sigma), mu - 4 * sigma, mu + 4 * sigma , ylab = expression(f[X](x)), xlab="X")
+        x <- seq(mu - 4 * sigma, q, by = 0.01)
+        y <- seq(q, mu + 4 * sigma, by = 0.01)
         fx <- dnorm(x, mean = mu, sd = sigma)
         fy <- dnorm(y, mean = mu, sd = sigma)
         polygon(c(x, rev(x)),
@@ -26,14 +26,14 @@ p <- function(q, dist = "normal", lower.tail = TRUE, rounding = 4,
         abline(v=0, lty=2)
         qq <- round(q, digits=2)
         qqaux <-round(q, digits=2)
-        Pr <- round(pnorm(qq,  mean = mu, sd=sigma, lower.tail = T), digits=rounding)
+        Pr <- round(pnorm(qq,  mean = mu, sd=sigma, lower.tail = X), digits=rounding)
         Pr <- gsub("\\.", ",", Pr)
         qq <- gsub("\\.", ",", qq)
         axis(side=1, at=qqaux, labels=qqaux,
              col="red", font = 2)
         abline(v = qqaux, lty=2, col = "red")
         legend("topleft", bty="n", fill="red",
-               legend=substitute(P(T<=q)==Pr~"\n\n"~mean==mu, list(q=qq, Pr=Pr, mu = mu)))
+               legend=substitute(P(X <= q)==Pr~"\n\n"~mean==mu, list(q=qq, Pr=Pr, mu = mu)))
       }
       if (gui == "plot" ) {
         # Probability
@@ -45,15 +45,15 @@ p <- function(q, dist = "normal", lower.tail = TRUE, rounding = 4,
       }
       if (gui == "rstudio") {
         manipulate::manipulate(plotcurve(qaux, muaux),
-                               qaux = manipulate::slider(-6, 6, q),
+                               qaux = manipulate::slider(mu - 4 * sigma, mu + 4 * sigma, q),
                                muaux = manipulate::slider(mu, mu + 200, mu))
       }
       
     } else{
       plotcurve <- function(q, mu, sigma) {
-        curve(dnorm(x, mean = mu, sd=sigma), -6, 6, ylab = expression(f[T](t)), xlab="T")
-        x <- seq(q, 6, by=0.01)
-        y <- seq(-6, q, by=0.01)
+        curve(dnorm(x, mean = mu, sd=sigma), mu - 4 * sigma, mu + 4 * sigma, ylab = expression(f[X](x)), xlab="X")
+        x <- seq(q, mu + 4 * sigma, by=0.01)
+        y <- seq(mu - 4 * sigma, q, by=0.01)
         fx <- dnorm(x, mean = mu, sd = sigma)
         fy <- dnorm(y, mean = mu, sd = sigma)
         polygon(c(x, rev(x)),
@@ -72,7 +72,7 @@ p <- function(q, dist = "normal", lower.tail = TRUE, rounding = 4,
              col="red", font = 2)
         abline(v = qqaux, lty=2, col = "red")
         legend("topleft", bty="n", fill="red",
-               legend=substitute(P(T~`>`~q)==Pr~"\n\n"~mean==mu, list(q=qq, Pr=Pr, mu = mu)))
+               legend=substitute(P(X~`>`~q)==Pr~"\n\n"~mean==mu, list(q=qq, Pr=Pr, mu = mu)))
       }
       if (gui == "plot") {
         # Probability
@@ -84,7 +84,7 @@ p <- function(q, dist = "normal", lower.tail = TRUE, rounding = 4,
       }
       if (gui == "rstudio") {
         manipulate::manipulate(plotcurve(qaux, muaux),
-                               qaux = manipulate::slider(-6, 6, q),
+                               qaux = manipulate::slider(mu - 4 * sigma, mu + 4 * sigma, q),
                                muaux = manipulate::slider(mu, mu + 200, mu))
       }
       
@@ -94,3 +94,4 @@ p <- function(q, dist = "normal", lower.tail = TRUE, rounding = 4,
   if (porcentage == TRUE) prob <- prob * 100
   return(prob)
 }
+
