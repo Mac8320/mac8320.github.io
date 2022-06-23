@@ -136,3 +136,4 @@ Relatórios desenvolvidos:
 - [Relatório 06 (29/05/2022)](rel06/index.html){target="_blank"}
 - Relatório 07 (02/06/2022)
 - [p_normal.R](rel07/p_normal.R){target="_blank"}
+- [Relatório 08 (20/06/2022)](rel08/index.html){target="_blank"}

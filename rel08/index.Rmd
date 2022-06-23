@@ -1,7 +1,7 @@
 ---
-title: "Relatório 02"
-author: "Ben Dêivide"
-date: "12/04/2022"
+title: "Relatório 08"
+author: "Marco Antônio Cândido da Silva"
+date: "20/06/2022"
 header-includes:
   - \usepackage{titling}
   - \pretitle{\begin{center}
@@ -30,9 +30,67 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Objetivo
 
-Descrever o objetivo do relatório!
+Descrever sobre as medidas de posição no ambiente leem do RStudio.
 
 # Apresentação do relatório
 
-Aqui será o local para apresentar o material sobre o relatório.
+Diante do objetivo do relatório, ele será dissertado e explanado nas próximas seções
 
+# Definição
+
+As medidas de posição são indicadores estatísticos que permitem resumir os dados em um ou dividir uma distribuição em intervalos do mesmo tamanho. Sendo assim, elas servem para medir e agrupar um conjunto de dados.
+Alguns exemplos de medidas de dispersão são: `média`, `mediana` e `moda`.
+
+# Média
+
+A média (Me) é calculada somando-se todos os valores de um conjunto de dados e dividindo-se pelo número de elementos deste conjunto.
+
+Como a média é uma medida sensível aos valores da amostra, é mais adequada para situações em que os dados são distribuídos mais ou menos de forma uniforme, ou seja, valores sem grandes discrepâncias.
+
+<center>
+
+$Me = (x1+x2+x3+x4+...+xn)/n$
+
+</center>
+
+O comando média pode ser acessado dentro do RStudio pelo comando *mean* e o argumento de entrada deve ser um conjunto de dados do tipo númerico.
+
+```{git}
+> Notas<-c(4,5,2,8)
+> mean (Notas)
+[1] 4.75
+```
+
+# Mediana
+
+A Mediana (Md) representa o valor central de um conjunto de dados. Para encontrar o valor da mediana é necessário colocar os valores em ordem crescente ou decrescente.
+
+Quando o número elementos de um conjunto é par, a mediana é encontrada pela média dos dois valores centrais. Assim, esses valores são somados e divididos por dois.
+
+O comando média pode ser acessado dentro do RStudio pelo comando *median* e o argumento de entrada deve ser um conjunto de dados do tipo númerico.
+
+```{git}
+> altura <- c(1.6,1.5,1.8,1.9,1.6,1.7)
+> median(altura)
+[1] 1.65
+```
+
+# Moda
+
+A Moda (Mo) representa o valor mais frequente de um conjunto de dados, sendo assim, para defini-la basta observar a frequência com que os valores aparecem.
+
+Um conjunto de dados é chamado de bimodal quando apresenta duas modas, ou seja, dois valores são mais frequentes.
+
+A função moda está contida dentro do pacote do Leem e pode ser acessada pelo comando *leem::mfreq()*
+
+Os argumentos dessa função são:
+
+- x: Conjunto de dados da classe leem;
+
+- details: Parâmetro usado por várias funções de dataframe para remover NA (quando a informação em uma certa célula da tabela não é fornecida). Quando na.rm é TRUE, a função ignora quaisquer valores NA. No entanto, quando na.rm for FALSE, ele retornará NA do cálculo que está sendo feito;
+
+- na.rm: Parâmetro usado por várias funções de dataframe para remover NA (quando a informação em uma certa célula da tabela não é fornecida). Quando na.rm é TRUE, a função ignora quaisquer valores NA. No entanto, quando na.rm for FALSE, ele retornará NA do cálculo que está sendo feito;
+
+- rounding: Determina o modo de arredondamento. Se nenhum parâmetro for fornecido, o modo de arredondamento do contexto atual será usado;
+
+- grouped: Forma especial de dataframe que permite criar um objeto de dados agrupados a partir de dois tipos de argumentos.
